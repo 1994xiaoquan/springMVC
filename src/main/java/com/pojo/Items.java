@@ -43,6 +43,18 @@ public class Items {
         return pic;
     }
 
+    @Override
+    public String toString() {
+        return "Items{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", price=" + price +
+                ", pic='" + pic + '\'' +
+                ", createtime=" + createtime +
+                ", detail='" + detail + '\'' +
+                '}';
+    }
+
     public void setPic(String pic) {
         this.pic = pic == null ? null : pic.trim();
     }
@@ -62,4 +74,5 @@ public class Items {
     public void setDetail(String detail) {
         this.detail = detail == null ? null : detail.trim();
     }
+
 }
