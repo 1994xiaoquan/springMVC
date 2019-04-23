@@ -6,6 +6,7 @@
       <root url="jar://$PROJECT_DIR$/lib/spring-web-4.3.18.RELEASE.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/spring-webmvc-4.3.18.RELEASE.jar!/" />
       <root url="jar://E:/newtomcat8.0/apache-tomcat-8.5.40/lib/servlet-api.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../Tomcat7.0/apache-tomcat-7.0.90/lib/servlet-api.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

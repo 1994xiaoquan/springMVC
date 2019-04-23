@@ -51,7 +51,17 @@ public class ItemController {
         System.out.println(queryVo.getItems().toString());
         itemService.updateItemById(queryVo.getItems());
         ModelAndView  mav = new ModelAndView();
-        mav.setViewName("itemList");
+        mav.setViewName("success");
+        return mav;
+    }
+
+    @RequestMapping(value = "/item/deleteItems")
+//    public ModelAndView itemUpdateById(Items items ){
+    public ModelAndView itemDeleteById(Integer[] ids){
+
+        itemService.deleteItemById(ids);
+        ModelAndView  mav = new ModelAndView();
+        mav.setViewName("success");
         return mav;
     }
 

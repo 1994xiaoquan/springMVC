@@ -26,7 +26,7 @@
 
 			<tr>
 				<td>商品生产日期</td>
-				<td><input type="text" name="createtime"
+				<td><input type="text" name="items.createtime"
 					value="<fmt:formatDate value="${item.createtime}" pattern="yyyy-MM-dd HH:mm:ss"/>" /></td>
 			</tr>
 			<%--

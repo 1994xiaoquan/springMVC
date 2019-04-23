@@ -25,7 +25,18 @@ public class ItenServiceImpl implements  ItemService {
 
     @Override
     public void updateItemById(Items items) {
-        items.setCreatetime(new Date());
+        if(items.getCreatetime()==null){
+            items.setCreatetime(new Date());
+        }
+
         itemsMapper.updateByPrimaryKeyWithBLOBs(items);
+    }
+
+    @Override
+    public void deleteItemById(Integer [] ids) {
+        for (int i =0; i<ids.length;i++ ){
+            itemsMapper.deleteByPrimaryKey(ids[i]);
+        }
+
     }
 }
