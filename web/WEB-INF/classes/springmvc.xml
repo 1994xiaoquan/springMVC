@@ -10,15 +10,16 @@
     <!-- 扫描-->
     <context:component-scan base-package="com"/>
 
-    <mvc:annotation-driven conversion-service=""/>
+    <mvc:annotation-driven conversion-service="conversionServiceFactoryBean"/>
     <!-- 设置处理器适配器 中的转换工厂 ,可以用来转换 提交数据至特定格式 以绑定到controller方法的参数上-->
-    <bean class ="org.springframework.format.support.FormattingConversionServiceFactoryBean" ></bean>
-        <!--可以设置转换器-->
-       <!-- <property name ="converters">
+    <bean id="conversionServiceFactoryBean" class ="org.springframework.format.support.FormattingConversionServiceFactoryBean" >
+        <property name="converters">
             <list>
-
+                <bean class="com.converters.Dateconverter"></bean>
             </list>
-        </property>-->
+        </property>
+    </bean>
+        <!--可以设置转换器-->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/jsp/"/>
         <property name="suffix" value=".jsp"/>

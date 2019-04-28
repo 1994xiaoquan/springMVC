@@ -9,4 +9,5 @@ public interface ItemService {
     public Items selectItemsById(Integer id);
     public void updateItemById(Items items);
     public void deleteItemById(Integer [] ids);
+    public void updatesItemById(List<Items> itemsList);
 }

@@ -17,24 +17,29 @@
 </tr>
 </table>
 </form>
+<%--
 <form action="${pageContext.request.contextPath }/item/deleteItems.action" method="post">
+--%>
+	<form action="${pageContext.request.contextPath }/item/updatesItems.action" method="post">
 商品列表：
 <table width="100%" border=1>
 <tr>
 	<td><input name = "ids" type="checkbox" value = ""></td>
+	<td style="display:none">商品ID</td>
 	<td>商品名称</td>
 	<td>商品价格</td>
 	<td>生产日期</td>
 	<td>商品描述</td>
 	<td>操作</td>
 </tr>
-<c:forEach items="${itemList }" var="item">
+<c:forEach items="${itemList }" var="item" varStatus="s">
 <tr>
 	<td><input name = "ids" type="checkbox" value = "${item.id}"></td>
-	<td>${item.name }</td>
-	<td>${item.price }</td>
-	<td><fmt:formatDate value="${item.createtime}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
-	<td>${item.detail }</td>
+	<td style="display:none"><input name = "itemsList[${s.index}].id" type="hidden" value = "${item.id}"></td>
+	<td><input name = "itemsList[${s.index}].name" type="text" value = "${item.name }"> </td>
+	<td><input name = "itemsList[${s.index}].price" type="text" value = "${item.price }"></td>
+	<td><input name = "itemsList[${s.index}].createtime" type="text" value = "<fmt:formatDate  value="${item.createtime}" pattern="yyyy-MM-dd HH:mm:ss"/>"></td>
+	<td><input name = "itemsList[${s.index}].detail" type="text" value = "${item.detail }"></td>
 	
 	<td><a href="${pageContext.request.contextPath }/item/itemEdit.action?id=${item.id}">修改</a></td>
 
@@ -44,6 +49,9 @@
 </table>
 	<tr>
 		<td><input type="submit" value="删除"  /></td>
+	</tr>
+	<tr>
+	<td><input type="submit" value="修改"  /></td>
 	</tr>
 </form>
 </body>
