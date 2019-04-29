@@ -3,6 +3,7 @@ package com.controller;
 import com.pojo.Items;
 import com.pojo.QueryVo;
 import com.service.ItemService;
+import com.util.exception.Myexception;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,7 +21,12 @@ public class ItemController {
     @Autowired
     private ItemService itemService;
     @RequestMapping(value = "/item/itemlist.action")
-    public ModelAndView itemList(){
+    public ModelAndView itemList() throws Exception{
+//        if(true){
+//            throw new Myexception();
+//        }
+        int i1 =1;
+        i1=i1/0;
         ModelAndView  mav = new ModelAndView();
         // 创建页面需要显示的商品数据
         List<Items> list = new ArrayList<Items>();
@@ -47,12 +53,16 @@ public class ItemController {
     }
     @RequestMapping(value = "/item/updateitem")
 //    public ModelAndView itemUpdateById(Items items ){
-    public ModelAndView itemUpdateById(QueryVo queryVo){
+    public String itemUpdateById(QueryVo queryVo){
         System.out.println(queryVo.getItems().toString());
         itemService.updateItemById(queryVo.getItems());
-        ModelAndView  mav = new ModelAndView();
-        mav.setViewName("success");
-        return mav;
+//        ModelAndView  mav = new ModelAndView();
+//        mav.setViewName("success");
+        //重定向
+       // return  "redirect:/item/itemEdit.action?id="+queryVo.getItems().getId();
+
+        //转发
+        return "forward:/item/itemEdit.action?id="+queryVo.getItems().getId();
     }
 
     @RequestMapping(value = "/item/deleteItems")
